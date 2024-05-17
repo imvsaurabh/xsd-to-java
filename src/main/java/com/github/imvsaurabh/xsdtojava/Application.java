@@ -12,10 +12,12 @@ public class Application {
     public static void main(String[] args) {
         Gson gson = new GsonBuilder()
                 .registerTypeHierarchyAdapter(XMLGregorianCalendar.class, new XMLGregorianCalendarAdapter())
+                .setPrettyPrinting()
                 .create();
 
         PurchaseOrder purchaseOrder = PurchaseOrderGenerator.generatePurchaseOrderSample();
         String purchaseOrderJson = gson.toJsonTree(purchaseOrder).toString();
-        System.out.println(purchaseOrderJson);
+        System.out.println("\n********** PurchaseOrder Object **********\n" + purchaseOrder);
+        System.out.println("\n********** PurchaseOrder Json String **********\n" + purchaseOrderJson);
     }
 }
